@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        div{
+            position: absolute;
+            width: 60px;
+            height: 25px;
+            color: green;
+            top: 50px;
+        }
+    </style>
+
+    <script>
+        var ufo, newufo;
+        function init() {
+            // キーイベント検知
+            window.addEventListener("keydown", keydown );
+            var ufo = new UFO( document.getElementById("ufo"), 100);
+            NewUFO.prototype = ufo;
+            newufo = new NewUFO(100);
+        }
+
+        function keydown(e) {
+            /* これはもう非推奨
+            if (e.keyCode == 37) {
+                ufo.moveLeft();
+            }else if (e.keyCode == 39) {
+                ufo.modeRight();
+            }
+            */
+
+            // key若しくはcodeを今後は使用
+            /*
+            if( e.key === 'a') {
+                ufo.moveLeft();
+            }else if( e.key === 'd') {
+                ufo.modeRight();
+            }
+            */
+            if( e.code === "ArrowLeft") {
+                newufo.moveLeft();
+            }else if( e.code === "ArrowRight") {
+                newufo.modeRight();
+            }else if( e.code === "ArrowUp") {
+                newufo.moveUp();
+            }else if( e.code === "ArrowDown") {
+                newufo.moveDown();
+            }
+            
+            /*
+            if( e.code === "KeyA") {
+                newufo.moveLeft();
+            }else if( e.code === "KeyD") {
+                newufo.modeRight();
+            }else if( e.code === "KeyW") {
+                newufo.moveUp();
+            }else if( e.code === "KeyS") {
+                newufo.moveDown();
+            }
+            */
+
+        }
+
+        // UFOオブジェクトの定義
+        function UFO(_elem, _xpos) {
+            this.elem = _elem;
+            this.xpos = _xpos;
+
+            this.moveLeft = function() {
+                this.xpos -= 10;
+                this.elem.style.left = this.xpos + "px";
+            }
+
+            this.modeRight = function() {
+                this.xpos += 10;
+                this.elem.style.left = this.xpos + "px";
+            }
+            // style.leftは左からの配置位置指定の意味
+            this.elem.style.left = this.xpos + "px";
+        }
+
+        function NewUFO(_ypos) {
+            this.ypos = _ypos;
+            
+            this.moveUp = function() {
+                this.ypos -= 10;
+                this.style.top = this.ypos + "px";
+            }
+
+            this.moveDown = function() {
+                this.ypos += 10;
+                this.style.top = this.ypos + "px";
+            }
+
+            this.elem.style.top = this.ypos + "px";
+        }
+    </script>
+
+</head>
+<body onload="init();">
+    <div id = "ufo"><(ooo)></div>
+</body>
+</html>
