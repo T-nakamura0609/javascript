@@ -43,6 +43,8 @@
                 ufo.modeRight();
             }
             */
+
+            // codeだと仮想キーボードにも対応
             if( e.code === "ArrowLeft") {
                 newufo.moveLeft();
             }else if( e.code === "ArrowRight") {
@@ -53,7 +55,7 @@
                 newufo.moveDown();
             }
             
-            /*
+            
             if( e.code === "KeyA") {
                 newufo.moveLeft();
             }else if( e.code === "KeyD") {
@@ -63,7 +65,7 @@
             }else if( e.code === "KeyS") {
                 newufo.moveDown();
             }
-            */
+            
 
         }
 
@@ -90,12 +92,12 @@
             
             this.moveUp = function() {
                 this.ypos -= 10;
-                this.style.top = this.ypos + "px";
+                this.elem.style.top = this.ypos + "px";
             }
 
             this.moveDown = function() {
                 this.ypos += 10;
-                this.style.top = this.ypos + "px";
+                this.elem.style.top = this.ypos + "px";
             }
 
             this.elem.style.top = this.ypos + "px";
